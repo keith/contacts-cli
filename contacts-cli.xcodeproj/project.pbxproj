@@ -88,6 +88,7 @@
 		C27499A11B9EC7F30061FFC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = smileykeith;
 				TargetAttributes = {
@@ -236,6 +237,7 @@
 				C27499B21B9EC7F30061FFC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
