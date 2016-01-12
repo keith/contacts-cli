@@ -3,7 +3,7 @@ EXECUTABLE=contacts
 PREFIX?=/usr/local/bin
 
 .PHONY: build clean install uninstall
-SRC=$(wildcard contacts-cli/*.swift)
+SRC=$(wildcard Sources/*.swift)
 
 clean:
 	rm -rf $(BUILD)
