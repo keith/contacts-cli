@@ -7,7 +7,7 @@ if arguments.isEmpty {
 }
 
 guard let addressBook = ABAddressBook.sharedAddressBook() else {
-    fputs("Failed to initialize address book\n", stderr)
+    fputs("Failed to create address book (check your Contacts privacy settings)\n", stderr)
     exit(EXIT_FAILURE)
 }
 

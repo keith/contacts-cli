@@ -16,6 +16,12 @@ query@example.com	First Last
 brew install keith/formulae/contacts-cli
 ```
 
+OR
+
+```sh
+make install
+```
+
 ### [mutt](http://www.mutt.org/) integration
 
 Somewhere in your `muttrc`:
