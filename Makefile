@@ -11,13 +11,15 @@ clean:
 build: $(SRC)
 	mkdir -p $(BUILD)
 	swiftc \
+		-static-stdlib \
+		-O -whole-module-optimization \
 		-o $(BUILD)/$(EXECUTABLE) \
 		-sdk $(shell xcrun --sdk macosx --show-sdk-path) \
 		-target x86_64-macosx10.10 \
 		$(SRC)
 
 install: build
-	install $(EXECUTABLE) $(PREFIX)
+	install $(BUILD)/$(EXECUTABLE) $(PREFIX)
 
 uninstall:
 	rm "$(PREFIX)/$(EXECUTABLE)"
