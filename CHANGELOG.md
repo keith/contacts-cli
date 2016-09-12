@@ -1,3 +1,18 @@
+## 1.1.0
+
+### Added
+
+None.
+
+### Changed
+
+- Updated for Swift 3
+- Statically link the Swift standard library
+
+### Fixed
+
+None.
+
 ## 1.0.1
 
 ### Added
