@@ -2,7 +2,7 @@
 
 A simple script for querying contacts from the command line.
 
-Usage:
+## Usage:
 
 ```sh
 $ contacts query
