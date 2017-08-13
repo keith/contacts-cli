@@ -5,9 +5,6 @@ PREFIX?=/usr/local/bin
 .PHONY: build clean install uninstall
 SRC=$(wildcard Sources/*.swift)
 
-clean:
-	rm -rf $(BUILD)
-
 build: $(SRC)
 	mkdir -p $(BUILD)
 	swiftc \
@@ -23,3 +20,6 @@ install: build
 
 uninstall:
 	rm "$(PREFIX)/$(EXECUTABLE)"
+
+clean:
+	rm -rf $(BUILD)
