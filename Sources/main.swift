@@ -6,6 +6,11 @@ if arguments.isEmpty {
     exit(EXIT_FAILURE)
 }
 
+// Replace stderr (where NSLog prints to) until http://www.openradar.me/30362625 is fixed
+let devNull = open("/dev/null", O_WRONLY)
+dup2(devNull, 2)
+close(devNull)
+
 guard let addressBook = ABAddressBook.shared() else {
     fputs("Failed to create address book (check your Contacts privacy settings)\n", stderr)
     exit(EXIT_FAILURE)
