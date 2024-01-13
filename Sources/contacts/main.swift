@@ -1,6 +1,5 @@
 import AddressBook
 import ArgumentParser
-import SwiftCSV
 
 enum OutputType: String, CaseIterable, ExpressibleByArgument {
     case csv, json
