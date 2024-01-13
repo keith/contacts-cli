@@ -5,8 +5,7 @@ PREFIX ?= /usr/local/bin
 .PHONY: archive clean install uninstall
 
 $(EXECUTABLE):
-	swift package resolve
-	swift build --configuration release --arch x86_64 --arch arm64
+	swift build --configuration release --arch x86_64 --arch arm64 -Xswiftc -parse-as-library
 	cp .build/apple/Products/Release/$(EXECUTABLE) .
 
 install: $(EXECUTABLE)
