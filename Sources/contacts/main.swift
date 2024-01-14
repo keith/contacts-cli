@@ -12,13 +12,13 @@ enum SearchFieldType: String, CaseIterable, ExpressibleByArgument {
 @main
 struct ContactsCommand: ParsableCommand {
     static let configuration = CommandConfiguration(
-        abstract: "A daemon process which helps you focus on your work."
+        abstract: "Query and export contacts from the command line"
     )
 
     @Flag(help: "Print out the version of the application.")
     var version = false
 
-    @Argument(help: "The query input")
+    @Argument(help: "The query input. Use '-' to read from stdin.")
     var searchString: String
 
     @Option
@@ -38,6 +38,15 @@ struct ContactsCommand: ParsableCommand {
         guard let addressBook = ABAddressBook.shared() else {
             fputs("Failed to create address book (check your Contacts privacy settings)\n", stderr)
             ContactsCommand.exit(withError: ExitCode.failure)
+        }
+
+        if searchString == "-" {
+            searchString = readLine() ?? ""
+
+            if searchString.isEmpty {
+                fputs("No search input provided through stdin\n", stderr)
+                ContactsCommand.exit(withError: ExitCode.failure)
+            }
         }
 
         var searchComparison: ABSearchElement
