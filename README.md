@@ -1,13 +1,38 @@
 # contacts-cli
 
-A simple script for querying contacts from the command line.
+A simple tool for querying and exporting the macOS contacts database from the command line.
 
 ## Usage:
 
+Here's an overview of the commands:
+
+```sh
+OVERVIEW: Query and export contacts from the command line
+
+USAGE: contacts-command [--version] <search-string> [--output-type <output-type>] [--search-field <search-field>]
+
+ARGUMENTS:
+  <search-string>         The query input. Use '-' to read from stdin.
+
+OPTIONS:
+  --version               Print out the version of the application.
+  --output-type <output-type>
+                          (values: csv, json; default: csv)
+  --search-field <search-field>
+                          (values: fullName, firstName, lastName, email, all; default: all)
+  -h, --help              Show help information.
+```
+
+And some specific examples:
+
 ```sh
 $ contacts query
-NAME	EMAIL
-query@example.com	First Last
+fullName,firstName,lastName,email
+First Last,First,Last,query@example.com,First Last
+
+$ echo '{"rowid": 1, "Name": "First Last"}' | jq -r '.Name' | xargs -I{} contacts {} --search-field fullName --output-type json | jq -r '.[0].email' | tr -d '\n'
+fullName,firstName,lastName,email
+First Last,First,Last,query@example.com,First Last
 ```
 
 ## Installation
